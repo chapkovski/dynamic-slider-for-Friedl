@@ -1,0 +1,116 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+
+{% block title %}
+    <span style="font-size:28px; ">  Erste Entscheidung </span> </td>
+    <br/>
+{% endblock %}
+
+
+
+
+{% block content %}
+
+    <table style="float:'center'">
+        <tr>
+            <th width=45%><span style="font-size:22px; ">  Spieler 1 </span></th>
+            <th align=center width=10%></th>
+            <th width=45%><span style="font-size:22px; ">  Spieler 2 </span></th>
+        </tr>
+        <tr>
+            <td align=left valign=top> Person 1 is a German native citizen who has received 10 Euro for his/her
+                performance in a task.
+                Person 1 has a regular job, does not have a university degree, and does not engage in voluntary
+                community work.
+            </td>
+            <td height=150 valine=bottom align=center>
+
+            </td>
+            <td align=left valign=top> Person 2 is an asylum seeker and did not participate in a task or receive 10
+                Euro.
+
+                Person 2 does not have a regular job, does not have a university degree, and engages in voluntary
+                community work.
+            </td>
+        </tr>
+    </table>
+
+
+
+
+
+    <table class="custom_table">
+
+        <tr>
+            <td class="left_td"><img id='german_img' src="{% static "refugee/7.png" %}" alt="x"
+                                     width="80%"></td>
+
+            <td width=50% height=300 valign=bottom
+                align=center> {% formfield player.test %}</td>
+
+            <td align=center width=20%><img id='emigree_img' src="{% static "refugee/3.png" %}" style="float:center"
+                                            alt="x"
+                                            width="80%"></td>
+        </tr>
+
+        <tr>
+            <td align=center><span style="font-size:18px; font-weight: bold;"> Spieler 1 </span></td>
+            <td align=center width=50%><span style="color: #008040; font-family: Tahoma; ">Bitte ziehen Sie den Schieberegler auf den €-Betrag den sie von Spieler 1 an Spieler 2 umverteilen wollen. </span>
+            </td>
+            <td align=center><span style="font-size:18px; font-weight: bold;"> Spieler 2 </span></td>
+        </tr>
+        <tr>
+            <td align=center><span style="font-size:18px; font-weight:bold; "> <span id="spieler1"
+                                                                                     class="spieler_output"></span>€ bei Spieler 1 lassen </span>
+            </td>
+            <td align=center width=50%></td>
+            <td align=center><span style="font-size:18px; font-weight:bold; ">   <span id="spieler2"
+                                                                                       class="spieler_output"></span>€ an Spieler 2 Senden </span>
+            </td>
+        </tr>
+    </table>
+
+
+
+    {% next_button %}
+
+{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static "css/style.css" %}" class="href">
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var endowment = {{ Constants.endowment }};
+        $(function () {
+            var spieler1_output = $('span#spieler1');
+            var spieler2_output = $('span#spieler2');
+            var imgs = [
+                '{% static "refugee/0.png" %}',
+                '{% static "refugee/1.png" %}',
+                '{% static "refugee/2.png" %}',
+                '{% static "refugee/3.png" %}',
+                '{% static "refugee/4.png" %}',
+                '{% static "refugee/5.png" %}',
+                '{% static "refugee/6.png" %}',
+                '{% static "refugee/7.png" %}',
+                '{% static "refugee/8.png" %}',
+                '{% static "refugee/9.png" %}',
+                '{% static "refugee/10.png" %}',
+
+            ];
+            var spieler1_img = $('#german_img');
+            var spieler2_img = $('#emigree_img');
+            $("input[type=range]").on("input", function (e) {
+                    to_german=parseInt($(this).val());
+                    to_emigree = endowment-to_german;
+                    spieler1_output.html(to_german);
+                    spieler2_output.html(to_emigree);
+                    spieler1_img.attr("src", imgs[to_german]);
+                    spieler2_img.attr("src", imgs[to_emigree]);
+                }
+            )
+        })
+    </script>
+{% endblock %}

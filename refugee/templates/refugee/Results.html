@@ -1,0 +1,67 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+
+
+{% block content %}
+
+
+    <p>Sie belassen {{ player.test }}€ bei Spieler 1.</p>
+    <p>Sie senden {{ player.a }}€ an Spieler 2.</p>
+<p>Sie senden {{ a }}€ an Spieler 2.</p>
+<p>Sie senden {{ b }}€ an Spieler 2.</p>
+    <p>Sie senden {{ test }}€ an Spieler 2.</p>
+
+
+
+    {% if player.slider == 0 %}
+        <p> <img src="{% static "refugee/0.png"%}" style="float:center" alt="Selfhtml" width="20%"  >   </td> <p>
+        {%  else %}
+            {% if player.slider == 1 %}
+        <p> <img src="{% static "refugee/1.png"%}" style="float:center" alt="Selfhtml" width="20%"  >   </td> <p>
+        {%  else %}
+            {% if player.slider == 2 %}
+        <p> <img src="{% static "refugee/2.png"%}" style="float:center" alt="Selfhtml" width="20%"  >   </td> <p>
+        {%  else %}
+            {% if player.slider == 3 %}
+        <p> <img src="{% static "refugee/3.png"%}" style="float:center" alt="Selfhtml" width="20%"  >   </td> <p>
+        {%  else %}
+            {% if player.slider == 4 %}
+        <p> <img src="{% static "refugee/4.png"%}" style="float:center" alt="Selfhtml" width="20%"  >   </td> <p>
+        {%  else %}
+            {% if player.slider == 5 %}
+        <p> <img src="{% static "refugee/5.png"%}" style="float:center" alt="Selfhtml" width="20%"  >   </td> <p>
+        {%  else %}
+            {% if player.slider == 6 %}
+        <p> <img src="{% static "refugee/6.png"%}" style="float:center" alt="Selfhtml" width="20%"  >   </td> <p>
+        {%  else %}
+            {% if player.slider == 7 %}
+        <p> <img src="{% static "refugee/7.png"%}" style="float:center" alt="Selfhtml" width="20%"  >   </td> <p>
+        {%  else %}
+            {% if player.slider == 8 %}
+        <p> <img src="{% static "refugee/8.png"%}" style="float:center" alt="Selfhtml" width="20%"  >   </td> <p>
+        {%  else %}
+            {% if player.slider == 9 %}
+        <p> <img src="{% static "refugee/9.png"%}" style="float:center" alt="Selfhtml" width="20%"  >   </td> <p>
+        {%  else %}
+
+        <p> <img src="{% static "refugee/10.png"%}" style="float:center" alt="Selfhtml" width="20%"  >   </td> <p>
+
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+
+
+    {% next_button %}
+{% endblock %}
