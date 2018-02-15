@@ -5,7 +5,6 @@ import dj_database_url
 
 import otree.settings
 
-CHANNEL_ROUTING = 'dropoutstrack.routing.channel_routing'
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # the environment variable OTREE_PRODUCTION controls whether Django runs in
